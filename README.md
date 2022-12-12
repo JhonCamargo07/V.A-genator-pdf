@@ -1,0 +1,1 @@
+# Variedades ampi generetor PDF
