@@ -18,7 +18,7 @@ app.use(express.text());
 
 app.use('/public', express.static(join(__dirname, 'public')));
 
-app.use(require('./routers/letters.router.js'));
+app.use(require('./routers/cards.router.js'));
 
 app.listen(app.get('port'), function () {
 	console.log(`App '${app.get('appName')}' corriendo en el puerto ${app.get('port')}`.red);
