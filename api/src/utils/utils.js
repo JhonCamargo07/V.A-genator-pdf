@@ -73,6 +73,10 @@ exports.writeToFileInfo = (lineFile) => {
 };
 
 exports.formatPhoneNumber = (num) => {
+	if (num === undefined) {
+		return '';
+	}
+
 	if (num.length <= 9 || num.length >= 11) {
 		return num;
 	}
@@ -84,12 +88,20 @@ exports.formatPhoneNumber = (num) => {
 	return finalNum;
 };
 
-exports.firstChartUpperCase = (cadena) => {
+exports.firstLetterOfEachWordUpperCase = (cadena) => {
 	if (cadena === undefined) {
 		return;
 	}
 	cadena = cadena.toLowerCase();
 	return cadena.replace(/\b\w/g, (l) => l.toUpperCase());
+};
+
+exports.firstChartUpperCase = (cadena) => {
+	if (cadena === undefined) {
+		return;
+	}
+	cadena = cadena.toLowerCase();
+	return cadena.replace(/\w/, (l) => l.toUpperCase());
 };
 
 exports.createPdf = (printer, contentCard) => {
