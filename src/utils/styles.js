@@ -14,7 +14,6 @@ module.exports = {
 	superMargin: {
 		margin: [35, 0, 35, 0],
 	},
-
 	marginTop: {
 		margin: [35, 20],
 	},
@@ -22,7 +21,7 @@ module.exports = {
 		margin: [35, 3],
 	},
 	marginFirma: {
-		margin: [35, 140, 0, 40],
+		margin: [35, 100, 0, 40],
 	},
 	font13: {
 		fontSize: 13,

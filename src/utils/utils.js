@@ -70,3 +70,23 @@ exports.writeToFileInfo = (lineFile) => {
 	fileContent = lines.join('\n') + `${lines.length <= 2 ? `${lineFile}` : `,\n\t${lineFile}`}` + '\n]\n';
 	fs.writeFileSync(`${pathFileInfo}`, fileContent, 'utf8');
 };
+
+exports.formatPhoneNumber = (num) => {
+	if (num.length <= 9 || num.length >= 11) {
+		return num;
+	}
+
+	finalNum = '';
+	finalNum += num.substr(0, 3);
+	finalNum += ' ' + num.substr(3, 3);
+	finalNum += ' ' + num.substr(6, 4);
+	return finalNum;
+};
+
+exports.firstChartUpperCase = (cadena) => {
+	if (cadena === undefined) {
+		return;
+	}
+	cadena = cadena.toLowerCase();
+	return cadena.replace(/\b\w/g, (l) => l.toUpperCase());
+};
