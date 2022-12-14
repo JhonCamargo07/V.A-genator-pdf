@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { join } = require('path');
+const { v4: uuidv4 } = require('uuid');
 
 exports.getNameMonth = (numMonth) => {
 	if (numMonth > 11 || numMonth < 0) {
@@ -89,4 +90,12 @@ exports.firstChartUpperCase = (cadena) => {
 	}
 	cadena = cadena.toLowerCase();
 	return cadena.replace(/\b\w/g, (l) => l.toUpperCase());
+};
+
+exports.createPdf = (printer, contentCard) => {
+	const nameFile = uuidv4();
+	let pdfDoc = printer.createPdfKitDocument(contentCard);
+	pdfDoc.pipe(fs.createWriteStream(join(__dirname, `../public/pdf/${nameFile}.pdf`)));
+	pdfDoc.end();
+	return nameFile;
 };
