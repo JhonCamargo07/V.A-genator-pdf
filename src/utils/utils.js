@@ -30,15 +30,43 @@ exports.getUnderscoreForSignature = (lengthNombre) => {
 	return underscoreForSignature;
 };
 
+exports.createFileInfoIfNotExists = (nameFileInfo) => {
+	const pathFileInfo = this.getPathFileInfo(nameFileInfo);
+	if (!fs.existsSync(pathFileInfo)) {
+		fs.appendFile(pathFileInfo, `[]`, (err) => {
+			if (err) throw err;
+			console.log('Se agrego las llaves');
+		});
+	}
+};
+
 exports.getFileNameInfo = () => {
-	return 'info-cards.txt';
+	const nameFileInfo = 'info-cards.json';
+	this.createFileInfoIfNotExists(nameFileInfo);
+	return nameFileInfo;
+};
+
+exports.getPathFileInfo = (nameFileInfo) => {
+	return join(__dirname, `../public/${nameFileInfo}`);
 };
 
 exports.writeToFileInfo = (lineFile) => {
 	const nameFileInfo = this.getFileNameInfo();
+	const pathFileInfo = this.getPathFileInfo(nameFileInfo);
 
-	fs.appendFile(`${join(__dirname, `../public/${nameFileInfo}`)}`, `${lineFile}\n`, (err) => {
-		if (err) throw err;
-		console.log(`Se agrego la informacion de la carta al archivo ${nameFileInfo}`);
-	});
+	let fileContent = fs.readFileSync(`${pathFileInfo}`, 'utf8');
+
+	let lines = fileContent.split('\n');
+
+	if (lines.length <= 2) {
+		fs.writeFileSync(`${pathFileInfo}`, `[\n\t\n]\n`, 'utf8');
+		fileContent = fs.readFileSync(`${pathFileInfo}`, 'utf8');
+		lines = fileContent.split('\n');
+	}
+
+	lines.pop();
+	lines.pop();
+
+	fileContent = lines.join('\n') + `${lines.length <= 2 ? `${lineFile}` : `,\n\t${lineFile}`}` + '\n]\n';
+	fs.writeFileSync(`${pathFileInfo}`, fileContent, 'utf8');
 };

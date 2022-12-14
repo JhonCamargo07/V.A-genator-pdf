@@ -15,9 +15,9 @@ cardsCtrl.personalCard = async (req, res) => {
 	const nameCard = personal.generatePersonalCard();
 
 	utils.writeToFileInfo(
-		`{"fecha": "${new Date().toLocaleDateString()}", "hora": "${new Date().toLocaleTimeString()}", "tipo_carta": "Referencia personal", "url": "http://${
+		`{\n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia personal", \n\t\t"url": "http://${
 			process.env.HOST
-		}/public/pdf/${nameCard}.pdf"}`
+		}/public/pdf/${nameCard}.pdf"\n\t}`
 	);
 
 	res.status(200).json({
