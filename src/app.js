@@ -6,17 +6,17 @@ const { join } = require('path');
 const cors = require('cors');
 
 const corsOptions = {
-	origin: `${process.env.ALLOWEB_HOST}`,
+	origin: process.env.ALLOWEB_HOST,
 	credentials: true,
 };
 
-const app = express(corsOptions);
+const app = express();
 
 app.set('appName', 'Hotelia API - Jhon Camargo');
 app.set('port', process.env.PORT || 64022);
 app.set('host', process.env.HOST || '127.0.0.1');
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.text());

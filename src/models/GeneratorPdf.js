@@ -1,8 +1,8 @@
-const utils = require('../utils/utils');
+const utils = require('./../utils/utils');
 const { join } = require('path');
 
-const fonts = require('../utils/fonts');
-const styles = require('../utils/styles');
+const fonts = require('./../utils/fonts');
+const styles = require('./../utils/styles');
 
 const PdfPrinter = require('pdfmake');
 const printer = new PdfPrinter(fonts);

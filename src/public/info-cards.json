@@ -1,1 +1,9 @@
-[]
+[
+	{
+		"fecha": "15/12/2022", 
+		"hora": "4:50:02 p. m.", 
+		"tipo_carta": "Referencia familiar", 
+		"url": "http://127.0.0.1:64022/public/pdf/1ff4803f-2e17-4376-bd47-2304625e2f41.pdf", 
+		"qr": "http://127.0.0.1:64022/public/img/1ff4803f-2e17-4376-bd47-2304625e2f41.png"
+	}
+]

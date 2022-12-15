@@ -1,6 +1,6 @@
-const utils = require('../utils/utils');
-const personal = require('../models/GeneratorPdf');
-const Personal = require('../models/InfoCards');
+const utils = require('./../utils/utils');
+const personal = require('./../models/GeneratorPdf');
+const Personal = require('./../models/InfoCards');
 
 const cardsCtrl = {};
 
@@ -63,16 +63,21 @@ cardsCtrl.comunityCard = (req, res) => {
 		)
 	);
 
+	utils.createQrImage(nameCard);
+
 	utils.writeToFileInfo(
 		`{\n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia familiar", \n\t\t"url": "http://${
 			process.env.HOST
-		}/public/pdf/${nameCard}.pdf"\n\t}`
+		}/public/pdf/${nameCard}.pdf", \n\t\t"qr": "http://${process.env.HOST}/public/img/${nameCard}.png"\n\t}`
 	);
 
 	res.status(200).json({
 		success: true,
 		message: 'Carta generada exitosamente',
-		data: { url: `http://${process.env.HOST}/public/pdf/${nameCard}.pdf` },
+		data: {
+			qr: `http://${process.env.HOST}/public/img/${nameCard}.png`,
+			url: `http://${process.env.HOST}/public/pdf/${nameCard}.pdf`,
+		},
 	});
 };
 
@@ -129,16 +134,21 @@ cardsCtrl.familyCard = (req, res) => {
 		)
 	);
 
+	utils.createQrImage(nameCard);
+
 	utils.writeToFileInfo(
 		`{\n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia familiar", \n\t\t"url": "http://${
 			process.env.HOST
-		}/public/pdf/${nameCard}.pdf"\n\t}`
+		}/public/pdf/${nameCard}.pdf", \n\t\t"qr": "http://${process.env.HOST}/public/img/${nameCard}.png"\n\t}`
 	);
 
 	res.status(200).json({
 		success: true,
 		message: 'Carta generada exitosamente',
-		data: { url: `http://${process.env.HOST}/public/pdf/${nameCard}.pdf` },
+		data: {
+			qr: `http://${process.env.HOST}/public/img/${nameCard}.png`,
+			url: `http://${process.env.HOST}/public/pdf/${nameCard}.pdf`,
+		},
 	});
 };
 
@@ -197,16 +207,21 @@ cardsCtrl.personalCard = (req, res) => {
 		)
 	);
 
+	utils.createQrImage(nameCard);
+
 	utils.writeToFileInfo(
-		`{\n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia personal", \n\t\t"url": "http://${
+		`{\n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia familiar", \n\t\t"url": "http://${
 			process.env.HOST
-		}/public/pdf/${nameCard}.pdf"\n\t}`
+		}/public/pdf/${nameCard}.pdf", \n\t\t"qr": "http://${process.env.HOST}/public/img/${nameCard}.png"\n\t}`
 	);
 
 	res.status(200).json({
 		success: true,
 		message: 'Carta generada exitosamente',
-		data: { url: `http://${process.env.HOST}/public/pdf/${nameCard}.pdf` },
+		data: {
+			qr: `http://${process.env.HOST}/public/img/${nameCard}.png`,
+			url: `http://${process.env.HOST}/public/pdf/${nameCard}.pdf`,
+		},
 	});
 };
 

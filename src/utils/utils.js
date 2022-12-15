@@ -1,4 +1,5 @@
 const fs = require('fs');
+const qr = require('qr-image');
 const { join } = require('path');
 const { v4: uuidv4 } = require('uuid');
 
@@ -110,4 +111,9 @@ exports.createPdf = (printer, contentCard) => {
 	pdfDoc.pipe(fs.createWriteStream(join(__dirname, `../public/pdf/${nameFile}.pdf`)));
 	pdfDoc.end();
 	return nameFile;
+};
+
+exports.createQrImage = (nameCard) => {
+	const qrImg = qr.imageSync(`http://${process.env.HOST}/public/pdf/${nameCard}.pdf`, { type: 'png' });
+	fs.writeFileSync(`${join(__dirname, `../public/img/${nameCard}`)}.png`, qrImg);
 };
