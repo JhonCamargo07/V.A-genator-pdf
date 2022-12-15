@@ -5,7 +5,12 @@ const nodemon = require('nodemon');
 const { join } = require('path');
 const cors = require('cors');
 
-const app = express();
+const corsOptions = {
+	origin: `${process.env.ALLOWEB_HOST}`,
+	credentials: true,
+};
+
+const app = express(corsOptions);
 
 app.set('appName', 'Hotelia API - Jhon Camargo');
 app.set('port', process.env.PORT || 64022);
