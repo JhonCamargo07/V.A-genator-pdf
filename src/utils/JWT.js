@@ -9,7 +9,7 @@ exports.login = () => {
 	};
 
 	// Genera el JWT
-	return jwt.sign(payload, secret, { expiresIn: '7 days' });
+	return jwt.sign(payload, secret, { expiresIn: '1h' });
 };
 
 exports.verifyToken = (token) => {
