@@ -32,8 +32,6 @@ app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.use('/public', express.static(join(__dirname, 'public')));
-
 app.use(require('./routers/cards.router.js'));
 
 app.listen(app.get('port'), function () {
