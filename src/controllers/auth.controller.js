@@ -13,8 +13,6 @@ ctrlAuth.login = (req, res) => {
 
 	const token = jwt.login();
 
-	req.session.userId = process.env.JWT_USER_ID;
-
 	res.status(200).json({ success: true, message: 'Inicio de sesi\u00f3n exitoso', token: token });
 };
 
@@ -28,14 +26,8 @@ ctrlAuth.isAutorized = (req, res, next) => {
 	if (jwt.verifyToken(authorization)) {
 		return next();
 	}
-	return res.status(401).json({ success: false, message: 'Debe iniciar sesi\u00f3n' });
-};
 
-ctrlAuth.validateSession = (req, res, next) => {
-	if (req.session.userId != process.env.JWT_USER_ID) {
-		return res.status(401).json({ success: false, message: 'Debe iniciar sesion' });
-	}
-	next();
+	return res.status(401).json({ success: false, message: 'Debe iniciar sesi\u00f3n' });
 };
 
 module.exports = ctrlAuth;

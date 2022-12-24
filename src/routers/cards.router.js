@@ -1,19 +1,17 @@
 const Router = require('express');
 const { join } = require('path');
 
-const { login, isAutorized, validateSession } = require('./../controllers/auth.controller.js');
+const { login, isAutorized } = require('./../controllers/auth.controller.js');
 const { personalCard, comunityCard, familyCard } = require('./../controllers/cards.controller.js');
 
 const utils = require('./../utils/utils');
 
 const router = Router();
 
-// Authorizations
-
 router.post('/api/login', login);
 
+// Authorizations
 router.use(isAutorized);
-router.use(validateSession);
 
 // Cards
 router.post('/api/family-card', familyCard);

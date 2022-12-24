@@ -1,10 +1,8 @@
 const cors = require('cors');
-const { join } = require('path');
 const morgan = require('morgan');
 const colors = require('colors');
 const express = require('express');
 const nodemon = require('nodemon');
-const session = require('express-session');
 
 const app = express();
 
@@ -16,17 +14,6 @@ const corsOptions = {
 	origin: [process.env.ALLOWEB_HOST],
 	credentials: true,
 };
-
-app.use(
-	session({
-		secret: process.env.JWT_SECRET,
-		resave: false,
-		saveUninitialized: true,
-		cookie: {
-			maxAge: 60 * 60 * 1000, // 1 hora en milisegundos
-		},
-	})
-);
 
 app.use(cors(corsOptions));
 app.use(morgan('dev'));
