@@ -86,7 +86,7 @@ exports.formatPhoneNumber = (num) => {
 	finalNum += num.substr(0, 3);
 	finalNum += ' ' + num.substr(3, 3);
 	finalNum += ' ' + num.substr(6, 4);
-	return finalNum;
+	return finalNum; // Format = 000 000 0000
 };
 
 exports.firstLetterOfEachWordUpperCase = (cadena) => {

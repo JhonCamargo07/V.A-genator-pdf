@@ -28,7 +28,6 @@ router.get('/public/pdf/:file', (req, res) => {
 });
 
 router.get('/public/*', (req, res) => {
-	console.log(req.params.file);
 	res.status(200).sendFile(join(__dirname, `../public/${utils.getFileNameInfo()}`));
 });
 

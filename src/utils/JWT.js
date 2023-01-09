@@ -7,8 +7,7 @@ exports.login = () => {
 		email: process.env.JWT_EMAIL,
 		userId: process.env.JWT_NAME,
 	};
-
-	// Genera el JWT
+	// Genera el token
 	return jwt.sign(payload, secret, { expiresIn: '1h' });
 };
 
