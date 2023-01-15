@@ -18,31 +18,36 @@ class Personal {
 		homePeopleCertified,
 		acquaintanceTime
 	) {
-		this.namePeopleCertifier = namePeopleCertifier ? namePeopleCertifier.toUpperCase() : undefined;
+		this.namePeopleCertifier = namePeopleCertifier != undefined ? namePeopleCertifier.toUpperCase() : undefined;
 
-		this.phonePeopleCertifier = phonePeopleCertifier ? utils.formatPhoneNumber(phonePeopleCertifier) : undefined;
+		this.phonePeopleCertifier = phonePeopleCertifier != undefined ? utils.formatPhoneNumber(phonePeopleCertifier) : undefined;
 
-		this.documentPeopleCertifier = documentPeopleCertifier ? parseInt(documentPeopleCertifier).toLocaleString() : undefined;
+		this.documentPeopleCertifier =
+			documentPeopleCertifier != undefined ? parseInt(documentPeopleCertifier).toLocaleString() : undefined;
 
-		this.documentTypePeopleCertifier = documentTypePeopleCertifier ? documentTypePeopleCertifier.toLowerCase() : undefined;
+		this.documentTypePeopleCertifier =
+			documentTypePeopleCertifier != undefined ? documentTypePeopleCertifier.toLowerCase() : undefined;
 
 		this.originDocumentPeopleCertifier = originDocumentPeopleCertifier
 			? utils.firstLetterOfEachWordUpperCase(originDocumentPeopleCertifier)
 			: undefined;
 
+		console.log('Prefix = ', prefixDocumentTypePeopleCertifier);
 		this.prefixDocumentTypePeopleCertifier = prefixDocumentTypePeopleCertifier
 			? prefixDocumentTypePeopleCertifier.toUpperCase()
 			: undefined;
 
 		this.isManPeopleCertifier = isManPeopleCertifier == true ?? false;
 
-		this.namePeopleCertified = namePeopleCertified ? namePeopleCertified.toUpperCase() : undefined;
+		this.namePeopleCertified = namePeopleCertified != undefined ? namePeopleCertified.toUpperCase() : undefined;
 
-		this.phonePeopleCertified = phonePeopleCertified ? utils.formatPhoneNumber(phonePeopleCertified) : undefined;
+		this.phonePeopleCertified = phonePeopleCertified != undefined ? utils.formatPhoneNumber(phonePeopleCertified) : undefined;
 
-		this.documentPeopleCertified = documentPeopleCertified ? parseInt(documentPeopleCertified).toLocaleString() : undefined;
+		this.documentPeopleCertified =
+			documentPeopleCertified != undefined ? parseInt(documentPeopleCertified).toLocaleString() : undefined;
 
-		this.documentTypePeopleCertified = documentTypePeopleCertified ? documentTypePeopleCertified.toLowerCase() : undefined;
+		this.documentTypePeopleCertified =
+			documentTypePeopleCertified != undefined ? documentTypePeopleCertified.toLowerCase() : undefined;
 
 		this.originDocumentPeopleCertified = originDocumentPeopleCertified
 			? utils.firstLetterOfEachWordUpperCase(originDocumentPeopleCertified)

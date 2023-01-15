@@ -188,6 +188,7 @@ exports.generateComunityCard = (personalCard) => {
 	if (!personalCard.isManPeopleCertified) {
 		prefixPeopleCertified = 'la se\u00f1ora';
 		identifyPeopleCertified = 'identificada';
+		personalCard.homePeopleCertified = personalCard.homePeopleCertified.slice(0, -1) + 'a';
 	}
 
 	personalCard.originDocumentPeopleCertified =
@@ -222,7 +223,7 @@ exports.generateComunityCard = (personalCard) => {
 				text: [
 					`El suscrito Presidente de la Junta de Acci\u00f3n Comunal del `,
 					{ text: `Barrio RECUERDO SUR`, style: ['bold'] },
-					`, certifica que ${prefixPeopleCertified}`,
+					`, certifica que ${prefixPeopleCertified} `,
 					{ text: `${personalCard.namePeopleCertified} `, style: 'bold' },
 					`${identifyPeopleCertified} con ${personalCard.documentTypePeopleCertified} `,
 					{
