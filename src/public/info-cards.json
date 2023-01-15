@@ -5,33 +5,5 @@
 		"tipo_carta": "Referencia personal",
 		"url": "http://127.0.0.1:64022/public/pdf/1ff4803f-2e17-4376-bd47-2304625e2f41.pdf",
 		"qr": "http://127.0.0.1:64022/public/img/1ff4803f-2e17-4376-bd47-2304625e2f41.png"
-	},
-	{
-		"fecha": "15/1/2023", 
-		"hora": "2:29:24 p. m.", 
-		"tipo_carta": "Referencia JAC Recuerdo", 
-		"url": "http://127.0.0.1:64022/public/pdf/80c75810-468b-4deb-9405-e2780cfb4b6e.pdf", 
-		"qr": "http://127.0.0.1:64022/public/img/80c75810-468b-4deb-9405-e2780cfb4b6e.png"
-	},
-	{
-		"fecha": "15/1/2023", 
-		"hora": "2:34:59 p. m.", 
-		"tipo_carta": "Referencia JAC Recuerdo", 
-		"url": "http://127.0.0.1:64022/public/pdf/627b18c3-53ff-4ed5-975b-f66ac85d964e.pdf", 
-		"qr": "http://127.0.0.1:64022/public/img/627b18c3-53ff-4ed5-975b-f66ac85d964e.png"
-	},
-	{
-		"fecha": "15/1/2023", 
-		"hora": "2:36:52 p. m.", 
-		"tipo_carta": "Referencia JAC Recuerdo", 
-		"url": "http://127.0.0.1:64022/public/pdf/e494cf12-3a3f-4d93-9fe9-6bf693f53527.pdf", 
-		"qr": "http://127.0.0.1:64022/public/img/e494cf12-3a3f-4d93-9fe9-6bf693f53527.png"
-	},
-	{
-		"fecha": "15/1/2023", 
-		"hora": "2:39:06 p. m.", 
-		"tipo_carta": "Referencia JAC Recuerdo", 
-		"url": "http://127.0.0.1:64022/public/pdf/f7365767-3aff-4968-b3f8-cd3c08e9afcd.pdf", 
-		"qr": "http://127.0.0.1:64022/public/img/f7365767-3aff-4968-b3f8-cd3c08e9afcd.png"
 	}
 ]
