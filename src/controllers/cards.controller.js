@@ -6,12 +6,6 @@ const cardsCtrl = {};
 
 cardsCtrl.comunityCard = (req, res) => {
 	if (
-		// !req.body.namePeopleCertifier ||
-		// !req.body.phonePeopleCertifier ||
-		// !req.body.documentPeopleCertifier ||
-		// !req.body.documentTypePeopleCertifier ||
-		// !req.body.prefixDocumentTypePeopleCertifier ||
-		// !req.body.isManPeopleCertifier === undefined ||
 		!req.body.namePeopleCertified ||
 		!req.body.documentPeopleCertified ||
 		!req.body.documentTypePeopleCertified ||
@@ -24,13 +18,6 @@ cardsCtrl.comunityCard = (req, res) => {
 	}
 
 	const {
-		namePeopleCertifier,
-		phonePeopleCertifier,
-		documentPeopleCertifier,
-		documentTypePeopleCertifier,
-		originDocumentPeopleCertifier,
-		prefixDocumentTypePeopleCertifier,
-		isManPeopleCertifier,
 		namePeopleCertified,
 		phonePeopleCertified,
 		documentPeopleCertified,
@@ -44,13 +31,6 @@ cardsCtrl.comunityCard = (req, res) => {
 
 	const nameCard = personal.generateComunityCard(
 		new Personal(
-			namePeopleCertifier,
-			phonePeopleCertifier,
-			documentPeopleCertifier,
-			documentTypePeopleCertifier,
-			originDocumentPeopleCertifier,
-			prefixDocumentTypePeopleCertifier,
-			isManPeopleCertifier,
 			namePeopleCertified,
 			phonePeopleCertified,
 			documentPeopleCertified,
