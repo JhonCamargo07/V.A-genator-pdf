@@ -18,21 +18,40 @@ class Personal {
 		homePeopleCertified,
 		acquaintanceTime
 	) {
-		this.namePeopleCertifier = namePeopleCertifier.toUpperCase();
-		this.phonePeopleCertifier = utils.formatPhoneNumber(phonePeopleCertifier);
-		this.documentPeopleCertifier = parseInt(documentPeopleCertifier).toLocaleString();
-		this.documentTypePeopleCertifier = documentTypePeopleCertifier.toLowerCase();
-		this.originDocumentPeopleCertifier = utils.firstLetterOfEachWordUpperCase(originDocumentPeopleCertifier);
-		this.prefixDocumentTypePeopleCertifier = prefixDocumentTypePeopleCertifier.toUpperCase();
+		this.namePeopleCertifier = namePeopleCertifier ? namePeopleCertifier.toUpperCase() : '';
+
+		this.phonePeopleCertifier = phonePeopleCertifier ? utils.formatPhoneNumber(phonePeopleCertifier) : '';
+
+		this.documentPeopleCertifier = documentPeopleCertifier ? parseInt(documentPeopleCertifier).toLocaleString() : '';
+
+		this.documentTypePeopleCertifier = documentTypePeopleCertifier ? documentTypePeopleCertifier.toLowerCase() : '';
+
+		this.originDocumentPeopleCertifier = originDocumentPeopleCertifier
+			? utils.firstLetterOfEachWordUpperCase(originDocumentPeopleCertifier)
+			: '';
+
+		this.prefixDocumentTypePeopleCertifier = prefixDocumentTypePeopleCertifier
+			? prefixDocumentTypePeopleCertifier.toUpperCase()
+			: '';
+
 		this.isManPeopleCertifier = isManPeopleCertifier == true ?? false;
 
-		this.namePeopleCertified = namePeopleCertified.toUpperCase();
-		this.phonePeopleCertified = utils.formatPhoneNumber(phonePeopleCertified);
-		this.documentPeopleCertified = parseInt(documentPeopleCertified).toLocaleString();
-		this.documentTypePeopleCertified = documentTypePeopleCertified.toLowerCase();
-		this.originDocumentPeopleCertified = utils.firstLetterOfEachWordUpperCase(originDocumentPeopleCertified);
+		this.namePeopleCertified = namePeopleCertified ? namePeopleCertified.toUpperCase() : '';
+
+		this.phonePeopleCertified = phonePeopleCertified ? utils.formatPhoneNumber(phonePeopleCertified) : '';
+
+		this.documentPeopleCertified = documentPeopleCertified ? parseInt(documentPeopleCertified).toLocaleString() : '';
+
+		this.documentTypePeopleCertified = documentTypePeopleCertified ? documentTypePeopleCertified.toLowerCase() : '';
+
+		this.originDocumentPeopleCertified = originDocumentPeopleCertified
+			? utils.firstLetterOfEachWordUpperCase(originDocumentPeopleCertified)
+			: '';
+
 		this.isManPeopleCertified = isManPeopleCertified == true ?? false;
+
 		this.addresPeopleCertified = addresPeopleCertified;
+
 		this.homePeopleCertified = homePeopleCertified;
 
 		this.acquaintanceTime = acquaintanceTime;

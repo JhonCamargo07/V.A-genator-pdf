@@ -6,12 +6,12 @@ const cardsCtrl = {};
 
 cardsCtrl.comunityCard = (req, res) => {
 	if (
-		!req.body.namePeopleCertifier ||
-		!req.body.phonePeopleCertifier ||
-		!req.body.documentPeopleCertifier ||
-		!req.body.documentTypePeopleCertifier ||
-		!req.body.prefixDocumentTypePeopleCertifier ||
-		!req.body.isManPeopleCertifier === undefined ||
+		// !req.body.namePeopleCertifier ||
+		// !req.body.phonePeopleCertifier ||
+		// !req.body.documentPeopleCertifier ||
+		// !req.body.documentTypePeopleCertifier ||
+		// !req.body.prefixDocumentTypePeopleCertifier ||
+		// !req.body.isManPeopleCertifier === undefined ||
 		!req.body.namePeopleCertified ||
 		!req.body.documentPeopleCertified ||
 		!req.body.documentTypePeopleCertified ||
