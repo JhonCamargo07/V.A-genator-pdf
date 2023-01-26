@@ -17,17 +17,6 @@ cardsCtrl.comunityCard = (req, res) => {
 		return res.status(200).json({ success: false, message: 'Los datos no pueden ser nulos' });
 	}
 
-	console.log(
-		'Datos =',
-		req.body.namePeopleCertified,
-		req.body.documentPeopleCertified,
-		req.body.documentTypePeopleCertified,
-		req.body.isManPeopleCertified,
-		req.body.addresPeopleCertified,
-		req.body.phonePeopleCertified,
-		req.body.homePeopleCertified
-	);
-
 	const {
 		namePeopleCertifier,
 		phonePeopleCertifier,
