@@ -12,7 +12,7 @@ exports.login = () => {
 };
 
 exports.verifyToken = (token) => {
-	isTrue = false;
+	let isTrue = false;
 	jwt.verify(token, secret, (err) => {
 		if (!err) isTrue = true;
 	});

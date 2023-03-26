@@ -31,9 +31,4 @@ router.get('/public/*', (req, res) => {
 	res.status(200).sendFile(join(__dirname, `../public/${utils.getFileNameInfo()}`));
 });
 
-// Error 404
-router.use((req, res) => {
-	res.status(404).json({ success: false, message: 'Page no found' });
-});
-
 module.exports = router;

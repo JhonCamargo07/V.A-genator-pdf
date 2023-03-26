@@ -1,8 +1,6 @@
 const cors = require('cors');
 const morgan = require('morgan');
-const colors = require('colors');
 const express = require('express');
-const nodemon = require('nodemon');
 
 const app = express();
 
@@ -19,7 +17,9 @@ app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.use(require('./routers/cards.router.js'));
+app.use(require('./routers/cards.router'));
+app.use(require('./routers/infoFile.router'));
+app.use(require('./routers/others.router'));
 
 app.listen(app.get('port'), function () {
 	console.log(`App '${app.get('appName')}' corriendo en el puerto ${app.get('port')}`.red);

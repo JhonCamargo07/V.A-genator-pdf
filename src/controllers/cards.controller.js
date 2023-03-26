@@ -60,7 +60,7 @@ cardsCtrl.comunityCard = (req, res) => {
 	utils.createQrImage(nameCard);
 
 	utils.writeToFileInfo(
-		`{\n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia JAC Recuerdo", \n\t\t"url": "http://${
+		`{\n\t\t"id": "${nameCard}", \n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia JAC Recuerdo", \n\t\t"url": "http://${
 			process.env.HOST
 		}/public/pdf/${nameCard}.pdf", \n\t\t"qr": "http://${process.env.HOST}/public/img/${nameCard}.png"\n\t}`
 	);

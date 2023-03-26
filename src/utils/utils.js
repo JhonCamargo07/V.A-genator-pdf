@@ -7,7 +7,7 @@ exports.getNameMonth = (numMonth) => {
 	if (numMonth > 11 || numMonth < 0) {
 		return 'desconocido';
 	}
-	months = [
+	const months = [
 		'enero',
 		'febrero',
 		'marzo',
@@ -56,12 +56,12 @@ exports.writeToFileInfo = (lineFile) => {
 	const nameFileInfo = this.getFileNameInfo();
 	const pathFileInfo = this.getPathFileInfo(nameFileInfo);
 
-	let fileContent = fs.readFileSync(`${pathFileInfo}`, 'utf8');
+	let fileContent = fs.readFileSync(pathFileInfo, 'utf8');
 
 	let lines = fileContent.split('\n');
 
 	if (lines.length <= 2) {
-		fs.writeFileSync(`${pathFileInfo}`, `[\n\t\n]\n`, 'utf8');
+		fs.writeFileSync(pathFileInfo, `[\n\t\n]\n`, 'utf8');
 		fileContent = fs.readFileSync(`${pathFileInfo}`, 'utf8');
 		lines = fileContent.split('\n');
 	}
@@ -69,8 +69,39 @@ exports.writeToFileInfo = (lineFile) => {
 	lines.pop();
 	lines.pop();
 
-	fileContent = lines.join('\n') + `${lines.length <= 2 ? `${lineFile}` : `,\n\t${lineFile}`}` + '\n]\n';
-	fs.writeFileSync(`${pathFileInfo}`, fileContent, 'utf8');
+	lineFile = lines.length <= 2 ? `${lineFile}` : `,\n\t${lineFile}`;
+
+	fileContent = lines.join('\n') + `${lineFile}` + '\n]\n';
+	fs.writeFileSync(pathFileInfo, fileContent, 'utf8');
+};
+
+exports.deleteElementFromInfoFile = (idElementToDeleted) => {
+	const nameFileInfo = this.getFileNameInfo();
+	const pathFileInfo = this.getPathFileInfo(nameFileInfo);
+
+	let fileContent = fs.readFileSync(pathFileInfo, 'utf8');
+	let fileJson = JSON.parse(fileContent);
+
+	const element = fileJson.findIndex((item) => item.id === idElementToDeleted);
+	if (element !== -1) {
+		fileJson.splice(element, 1);
+	}
+
+	fileContent = JSON.stringify(fileJson, null, 4);
+	fs.writeFileSync(pathFileInfo, fileContent, 'utf8');
+};
+
+exports.deleteFile = async (urlFileToDeleted) => {
+	try {
+		return new Promise((resolve, reject) => {
+			fs.unlink(join(__dirname, urlFileToDeleted), (err) => {
+				if (err) return resolve(false);
+				resolve(true);
+			});
+		});
+	} catch (error) {
+		return false;
+	}
 };
 
 exports.formatPhoneNumber = (num) => {
@@ -82,7 +113,7 @@ exports.formatPhoneNumber = (num) => {
 		return num;
 	}
 
-	finalNum = '';
+	let finalNum = '';
 	finalNum += num.substr(0, 3);
 	finalNum += ' ' + num.substr(3, 3);
 	finalNum += ' ' + num.substr(6, 4);

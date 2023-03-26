@@ -178,11 +178,6 @@ exports.generateFamilyCard = (personalCard) => {
 	return nameFile;
 };
 exports.generateComunityCard = (personalCard) => {
-	let identifyPeopleCertifier = 'identificado';
-	if (!personalCard.isManPeopleCertifier) {
-		identifyPeopleCertifier = 'identificada';
-	}
-
 	let prefixPeopleCertified = 'el se\u00f1or';
 	let identifyPeopleCertified = 'identificado';
 	if (!personalCard.isManPeopleCertified) {
