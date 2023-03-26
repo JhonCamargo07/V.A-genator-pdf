@@ -1,9 +1,9 @@
 const Router = require('express');
 
-const { deleteElementAtInfoFile } = require('../controllers/infoFile.constroller');
+const { deleteCard } = require('../controllers/infoFile.constroller');
 
 const router = Router();
 
-router.post('/api/delete', deleteElementAtInfoFile);
+router.delete('/api/deleteCard', deleteCard);
 
 module.exports = router;

@@ -82,10 +82,7 @@ exports.deleteElementFromInfoFile = (idElementToDeleted) => {
 	let fileContent = fs.readFileSync(pathFileInfo, 'utf8');
 	let fileJson = JSON.parse(fileContent);
 
-	const element = fileJson.findIndex((item) => item.id === idElementToDeleted);
-	if (element !== -1) {
-		fileJson.splice(element, 1);
-	}
+	fileJson = fileJson.filter((item) => item.id !== idElementToDeleted);
 
 	fileContent = JSON.stringify(fileJson, null, 4);
 	fs.writeFileSync(pathFileInfo, fileContent, 'utf8');

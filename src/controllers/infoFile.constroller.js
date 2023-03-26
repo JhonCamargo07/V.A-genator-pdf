@@ -2,7 +2,7 @@ const utils = require('./../utils/utils');
 
 const infoFileCtrl = {};
 
-infoFileCtrl.deleteElementAtInfoFile = async (req, res) => {
+infoFileCtrl.deleteCard = async (req, res) => {
 	if (!req.body.idFile)
 		return res
 			.status(200)
