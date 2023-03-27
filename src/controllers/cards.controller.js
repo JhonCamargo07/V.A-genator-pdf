@@ -1,6 +1,6 @@
 const utils = require('./../utils/utils');
 const personal = require('./../models/GeneratorPdf');
-const Personal = require('./../models/InfoCards');
+const PersonalModel = require('./../models/InfoCards');
 
 const cardsCtrl = {};
 
@@ -37,7 +37,7 @@ cardsCtrl.comunityCard = (req, res) => {
 	} = req.body;
 
 	const nameCard = personal.generateComunityCard(
-		new Personal(
+		new PersonalModel(
 			namePeopleCertifier,
 			phonePeopleCertifier,
 			documentPeopleCertifier,
@@ -59,11 +59,14 @@ cardsCtrl.comunityCard = (req, res) => {
 
 	utils.createQrImage(nameCard);
 
-	utils.writeToFileInfo(
-		`{\n\t\t"id": "${nameCard}", \n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia JAC Recuerdo", \n\t\t"url": "http://${
-			process.env.HOST
-		}/public/pdf/${nameCard}.pdf", \n\t\t"qr": "http://${process.env.HOST}/public/img/${nameCard}.png"\n\t}`
-	);
+	utils.writeToInfoFile({
+		id: `${nameCard}`,
+		fecha: `${new Date().toLocaleDateString()}`,
+		hora: `${new Date().toLocaleTimeString()}`,
+		tipo_carta: `Referencia JAC Recuerdo`,
+		url: `http://${process.env.HOST}/public/pdf/${nameCard}.pdf`,
+		qr: `http://${process.env.HOST}/public/img/${nameCard}.png`,
+	});
 
 	res.status(200).json({
 		success: true,
@@ -108,7 +111,7 @@ cardsCtrl.familyCard = (req, res) => {
 	} = req.body;
 
 	const nameCard = personal.generateFamilyCard(
-		new Personal(
+		new PersonalModel(
 			namePeopleCertifier,
 			phonePeopleCertifier,
 			documentPeopleCertifier,
@@ -130,11 +133,14 @@ cardsCtrl.familyCard = (req, res) => {
 
 	utils.createQrImage(nameCard);
 
-	utils.writeToFileInfo(
-		`{\n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia familiar", \n\t\t"url": "http://${
-			process.env.HOST
-		}/public/pdf/${nameCard}.pdf", \n\t\t"qr": "http://${process.env.HOST}/public/img/${nameCard}.png"\n\t}`
-	);
+	utils.writeToInfoFile({
+		id: `${nameCard}`,
+		fecha: `${new Date().toLocaleDateString()}`,
+		hora: `${new Date().toLocaleTimeString()}`,
+		tipo_carta: `Referencia familiar`,
+		url: `http://${process.env.HOST}/public/pdf/${nameCard}.pdf`,
+		qr: `http://${process.env.HOST}/public/img/${nameCard}.png`,
+	});
 
 	res.status(200).json({
 		success: true,
@@ -181,7 +187,7 @@ cardsCtrl.personalCard = (req, res) => {
 	} = req.body;
 
 	const nameCard = personal.generatePersonalCard(
-		new Personal(
+		new PersonalModel(
 			namePeopleCertifier,
 			phonePeopleCertifier,
 			documentPeopleCertifier,
@@ -203,11 +209,14 @@ cardsCtrl.personalCard = (req, res) => {
 
 	utils.createQrImage(nameCard);
 
-	utils.writeToFileInfo(
-		`{\n\t\t"fecha": "${new Date().toLocaleDateString()}", \n\t\t"hora": "${new Date().toLocaleTimeString()}", \n\t\t"tipo_carta": "Referencia personal", \n\t\t"url": "http://${
-			process.env.HOST
-		}/public/pdf/${nameCard}.pdf", \n\t\t"qr": "http://${process.env.HOST}/public/img/${nameCard}.png"\n\t}`
-	);
+	utils.writeToInfoFile({
+		id: `${nameCard}`,
+		fecha: `${new Date().toLocaleDateString()}`,
+		hora: `${new Date().toLocaleTimeString()}`,
+		tipo_carta: `Referencia personal`,
+		url: `http://${process.env.HOST}/public/pdf/${nameCard}.pdf`,
+		qr: `http://${process.env.HOST}/public/img/${nameCard}.png`,
+	});
 
 	res.status(200).json({
 		success: true,

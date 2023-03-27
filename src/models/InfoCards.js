@@ -32,7 +32,6 @@ class Personal {
 			? utils.firstLetterOfEachWordUpperCase(originDocumentPeopleCertifier)
 			: undefined;
 
-		console.log('Prefix = ', prefixDocumentTypePeopleCertifier);
 		this.prefixDocumentTypePeopleCertifier = prefixDocumentTypePeopleCertifier
 			? prefixDocumentTypePeopleCertifier.toUpperCase()
 			: undefined;

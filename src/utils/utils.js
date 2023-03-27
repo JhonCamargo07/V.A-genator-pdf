@@ -3,7 +3,9 @@ const qr = require('qr-image');
 const { join } = require('path');
 const { v4: uuidv4 } = require('uuid');
 
-exports.getNameMonth = (numMonth) => {
+const utils = {};
+
+utils.getNameMonth = (numMonth) => {
 	if (numMonth > 11 || numMonth < 0) {
 		return 'desconocido';
 	}
@@ -24,60 +26,49 @@ exports.getNameMonth = (numMonth) => {
 	return months[numMonth];
 };
 
-exports.getUnderscoreForSignature = (lengthNombre) => {
-	let underscoreForSignature = ' ______';
+utils.getUnderscoreForSignature = (lengthNombre) => {
+	let underscoreForSignature = ' _______';
 	for (let i = 0; i <= lengthNombre; i++) {
 		underscoreForSignature += '_';
 	}
 	return underscoreForSignature;
 };
 
-exports.createFileInfoIfNotExists = (nameFileInfo) => {
-	const pathFileInfo = this.getPathFileInfo(nameFileInfo);
+utils.createFileInfoIfNotExists = (nameFileInfo) => {
+	const pathFileInfo = utils.getPathFileInfo(nameFileInfo);
 	if (!fs.existsSync(pathFileInfo)) {
 		fs.appendFile(pathFileInfo, `[]`, (err) => {
 			if (err) throw err;
-			console.log('Se agrego las llaves');
 		});
 	}
 };
 
-exports.getFileNameInfo = () => {
+utils.getFileNameInfo = () => {
 	const nameFileInfo = 'info-cards.json';
-	this.createFileInfoIfNotExists(nameFileInfo);
+	utils.createFileInfoIfNotExists(nameFileInfo);
 	return nameFileInfo;
 };
 
-exports.getPathFileInfo = (nameFileInfo) => {
+utils.getPathFileInfo = (nameFileInfo) => {
 	return join(__dirname, `../public/${nameFileInfo}`);
 };
 
-exports.writeToFileInfo = (lineFile) => {
-	const nameFileInfo = this.getFileNameInfo();
-	const pathFileInfo = this.getPathFileInfo(nameFileInfo);
+utils.writeToInfoFile = (data) => {
+	const nameFileInfo = utils.getFileNameInfo();
+	const pathFileInfo = utils.getPathFileInfo(nameFileInfo);
 
 	let fileContent = fs.readFileSync(pathFileInfo, 'utf8');
+	let fileJson = JSON.parse(fileContent);
 
-	let lines = fileContent.split('\n');
+	fileJson.push(data);
 
-	if (lines.length <= 2) {
-		fs.writeFileSync(pathFileInfo, `[\n\t\n]\n`, 'utf8');
-		fileContent = fs.readFileSync(`${pathFileInfo}`, 'utf8');
-		lines = fileContent.split('\n');
-	}
-
-	lines.pop();
-	lines.pop();
-
-	lineFile = lines.length <= 2 ? `${lineFile}` : `,\n\t${lineFile}`;
-
-	fileContent = lines.join('\n') + `${lineFile}` + '\n]\n';
+	fileContent = JSON.stringify(fileJson, null, 4);
 	fs.writeFileSync(pathFileInfo, fileContent, 'utf8');
 };
 
-exports.deleteElementFromInfoFile = (idElementToDeleted) => {
-	const nameFileInfo = this.getFileNameInfo();
-	const pathFileInfo = this.getPathFileInfo(nameFileInfo);
+utils.deleteElementFromInfoFile = (idElementToDeleted) => {
+	const nameFileInfo = utils.getFileNameInfo();
+	const pathFileInfo = utils.getPathFileInfo(nameFileInfo);
 
 	let fileContent = fs.readFileSync(pathFileInfo, 'utf8');
 	let fileJson = JSON.parse(fileContent);
@@ -88,7 +79,7 @@ exports.deleteElementFromInfoFile = (idElementToDeleted) => {
 	fs.writeFileSync(pathFileInfo, fileContent, 'utf8');
 };
 
-exports.deleteFile = async (urlFileToDeleted) => {
+utils.deleteFile = async (urlFileToDeleted) => {
 	try {
 		return new Promise((resolve, reject) => {
 			fs.unlink(join(__dirname, urlFileToDeleted), (err) => {
@@ -101,7 +92,26 @@ exports.deleteFile = async (urlFileToDeleted) => {
 	}
 };
 
-exports.formatPhoneNumber = (num) => {
+utils.deleteAllFiles = async (folderPath) => {
+	const filesNeverToBeDeleted = ['firma.png', 'header.png'];
+
+	return new Promise((resolve, reject) => {
+		fs.readdir(join(__dirname, folderPath), (err, filesAtFolder) => {
+			if (err) resolve(false);
+
+			let allFilesDeleted = true;
+
+			filesAtFolder.forEach((fileToDeleted) => {
+				if (filesNeverToBeDeleted.includes(fileToDeleted)) return;
+
+				allFilesDeleted = utils.deleteFile(`${folderPath}${fileToDeleted}`);
+			});
+			resolve(allFilesDeleted);
+		});
+	});
+};
+
+utils.formatPhoneNumber = (num) => {
 	if (num === undefined) {
 		return '';
 	}
@@ -117,7 +127,7 @@ exports.formatPhoneNumber = (num) => {
 	return finalNum; // Format = 000 000 0000
 };
 
-exports.firstLetterOfEachWordUpperCase = (cadena) => {
+utils.firstLetterOfEachWordUpperCase = (cadena) => {
 	if (cadena === undefined) {
 		return;
 	}
@@ -125,7 +135,7 @@ exports.firstLetterOfEachWordUpperCase = (cadena) => {
 	return cadena.replace(/\b\w/g, (l) => l.toUpperCase());
 };
 
-exports.firstChartUpperCase = (cadena) => {
+utils.firstChartUpperCase = (cadena) => {
 	if (cadena === undefined) {
 		return;
 	}
@@ -133,7 +143,7 @@ exports.firstChartUpperCase = (cadena) => {
 	return cadena.replace(/\w/, (l) => l.toUpperCase());
 };
 
-exports.createPdf = (printer, contentCard) => {
+utils.createPdf = (printer, contentCard) => {
 	const nameFile = uuidv4();
 	let pdfDoc = printer.createPdfKitDocument(contentCard);
 	pdfDoc.pipe(fs.createWriteStream(join(__dirname, `../public/pdf/${nameFile}.pdf`)));
@@ -141,7 +151,9 @@ exports.createPdf = (printer, contentCard) => {
 	return nameFile;
 };
 
-exports.createQrImage = (nameCard) => {
+utils.createQrImage = (nameCard) => {
 	const qrImg = qr.imageSync(`http://${process.env.HOST}/public/pdf/${nameCard}.pdf`, { type: 'png' });
 	fs.writeFileSync(`${join(__dirname, `../public/img/${nameCard}`)}.png`, qrImg);
 };
+
+module.exports = utils;

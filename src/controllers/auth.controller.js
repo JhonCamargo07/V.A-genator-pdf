@@ -8,7 +8,7 @@ ctrlAuth.login = (req, res) => {
 	}
 
 	if (req.body.email != process.env.USER || req.body.pass != process.env.PASS) {
-		return res.status(200).json({ success: false, message: 'Las credenciales son incorrectas' });
+		return res.status(401).json({ success: false, message: 'Las credenciales son incorrectas' });
 	}
 
 	const token = jwt.login();
