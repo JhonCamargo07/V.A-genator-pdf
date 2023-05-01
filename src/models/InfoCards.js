@@ -23,7 +23,7 @@ class Personal {
 		this.phonePeopleCertifier = phonePeopleCertifier != undefined ? utils.formatPhoneNumber(phonePeopleCertifier) : undefined;
 
 		this.documentPeopleCertifier =
-			documentPeopleCertifier != undefined ? parseInt(documentPeopleCertifier).toLocaleString() : undefined;
+			documentPeopleCertifier != undefined ? parseInt(documentPeopleCertifier).toLocaleString('es-CO') : undefined;
 
 		this.documentTypePeopleCertifier =
 			documentTypePeopleCertifier != undefined ? documentTypePeopleCertifier.toLowerCase() : undefined;
@@ -36,14 +36,14 @@ class Personal {
 			? prefixDocumentTypePeopleCertifier.toUpperCase()
 			: undefined;
 
-		this.isManPeopleCertifier = isManPeopleCertifier == true ?? false;
+		this.isManPeopleCertifier = isManPeopleCertifier ?? false;
 
 		this.namePeopleCertified = namePeopleCertified != undefined ? namePeopleCertified.toUpperCase() : undefined;
 
 		this.phonePeopleCertified = phonePeopleCertified != undefined ? utils.formatPhoneNumber(phonePeopleCertified) : undefined;
 
 		this.documentPeopleCertified =
-			documentPeopleCertified != undefined ? parseInt(documentPeopleCertified).toLocaleString() : undefined;
+			documentPeopleCertified != undefined ? parseInt(documentPeopleCertified).toLocaleString('es-CO') : undefined;
 
 		this.documentTypePeopleCertified =
 			documentTypePeopleCertified != undefined ? documentTypePeopleCertified.toLowerCase() : undefined;
@@ -52,7 +52,7 @@ class Personal {
 			? utils.firstLetterOfEachWordUpperCase(originDocumentPeopleCertified)
 			: undefined;
 
-		this.isManPeopleCertified = isManPeopleCertified == true ?? false;
+		this.isManPeopleCertified = isManPeopleCertified ?? false;
 
 		this.addresPeopleCertified = addresPeopleCertified;
 

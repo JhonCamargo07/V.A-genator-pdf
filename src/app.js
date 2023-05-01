@@ -21,6 +21,8 @@ app.use(require('./routers/cards.router'));
 app.use(require('./routers/infoFile.router'));
 app.use(require('./routers/others.router'));
 
+console.log(parseInt(123456789.5).toLocaleString('es-CO'));
+
 app.listen(app.get('port'), function () {
 	console.log(`App '${app.get('appName')}' corriendo en el puerto ${app.get('port')}`.red);
 	console.log(`Go to server: http://${app.get('host')}`.blue);

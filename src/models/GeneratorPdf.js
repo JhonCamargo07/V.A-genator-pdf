@@ -26,10 +26,10 @@ exports.generatePersonalCard = (personalCard) => {
 	}
 
 	personalCard.originDocumentPeopleCertified =
-		personalCard.originDocumentPeopleCertified === undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertified;
+		personalCard.originDocumentPeopleCertified == undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertified;
 
 	personalCard.originDocumentPeopleCertifier =
-		personalCard.originDocumentPeopleCertifier === undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertifier;
+		personalCard.originDocumentPeopleCertifier == undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertifier;
 
 	if (personalCard.addresPeopleCertified != undefined) {
 		personalCard.addresPeopleCertified = utils.firstChartUpperCase(personalCard.addresPeopleCertified);
@@ -56,7 +56,6 @@ exports.generatePersonalCard = (personalCard) => {
 						text: `No. ${personalCard.documentPeopleCertified}${personalCard.originDocumentPeopleCertified}, `,
 						style: 'bold',
 					},
-					,
 					` es una persona ${values1[Math.floor(Math.random() * values1.length)]}, ${
 						values2[Math.floor(Math.random() * values2.length)]
 					}, ${values3[Math.floor(Math.random() * values3.length)]} y ${
@@ -70,7 +69,7 @@ exports.generatePersonalCard = (personalCard) => {
 				style: ['parrafo', 'marginTop'],
 			},
 			{
-				text: `Se expide en Bogot\u00e1, a los ${fecha.getDate()} d\u00edas del mes de ${utils.getNameMonth(
+				text: `Se expide en Bogot\u00e1, a los ${utils.getDateNow()} d\u00edas del mes de ${utils.getNameMonth(
 					fecha.getMonth()
 				)} de ${fecha.getFullYear()}.`,
 				style: ['parrafo', 'marginTop'],
@@ -113,10 +112,10 @@ exports.generateFamilyCard = (personalCard) => {
 	}
 
 	personalCard.originDocumentPeopleCertified =
-		personalCard.originDocumentPeopleCertified === undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertified;
+		personalCard.originDocumentPeopleCertified == undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertified;
 
 	personalCard.originDocumentPeopleCertifier =
-		personalCard.originDocumentPeopleCertifier === undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertifier;
+		personalCard.originDocumentPeopleCertifier == undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertifier;
 
 	const fecha = new Date();
 	let contentCard = {
@@ -139,7 +138,7 @@ exports.generateFamilyCard = (personalCard) => {
 						text: `No. ${personalCard.documentPeopleCertified}${personalCard.originDocumentPeopleCertified}, `,
 						style: 'bold',
 					},
-					,
+
 					` es una persona ${values1[Math.floor(Math.random() * values1.length)]}, ${
 						values2[Math.floor(Math.random() * values2.length)]
 					}, ${values3[Math.floor(Math.random() * values3.length)]} y ${
@@ -153,7 +152,7 @@ exports.generateFamilyCard = (personalCard) => {
 				style: ['parrafo', 'marginTop'],
 			},
 			{
-				text: `Se expide en Bogot\u00e1, a los ${fecha.getDate()} d\u00edas del mes de ${utils.getNameMonth(
+				text: `Se expide en Bogot\u00e1, a los ${utils.getDateNow()} d\u00edas del mes de ${utils.getNameMonth(
 					fecha.getMonth()
 				)} de ${fecha.getFullYear()}.`,
 				style: ['parrafo', 'marginTop'],
@@ -187,10 +186,10 @@ exports.generateComunityCard = (personalCard) => {
 	}
 
 	personalCard.originDocumentPeopleCertified =
-		personalCard.originDocumentPeopleCertified === undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertified;
+		personalCard.originDocumentPeopleCertified == undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertified;
 
 	personalCard.originDocumentPeopleCertifier =
-		personalCard.originDocumentPeopleCertifier === undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertifier;
+		personalCard.originDocumentPeopleCertifier == undefined ? '' : ' de ' + personalCard.originDocumentPeopleCertifier;
 
 	const fecha = new Date();
 	let contentCard = {
@@ -205,12 +204,12 @@ exports.generateComunityCard = (personalCard) => {
 		},
 		content: [
 			{
-				image: `${join(__dirname, `../public/img/header.png`)}`,
+				image: `${join(__dirname, '../public/img/header.png')}`,
 				width: 500,
 				style: ['alignCenter'],
 			},
 			{
-				text: `Bogot\u00e1, ${fecha.getDate()} de ${utils.getNameMonth(fecha.getMonth())} de ${fecha.getFullYear()}.`,
+				text: `Bogot\u00e1, ${utils.getDateNow()} de ${utils.getNameMonth(fecha.getMonth())} de ${fecha.getFullYear()}.`,
 				style: ['parrafo', 'marginTop', 'alignRight', 'bold'],
 			},
 			{ text: 'CERTIFICACI\u00d3N', style: ['header2', 'bold'] },
@@ -241,7 +240,7 @@ exports.generateComunityCard = (personalCard) => {
 				style: ['parrafo', 'marginTop'],
 			},
 			{
-				image: `${join(__dirname, `../public/img/firma.png`)}`,
+				image: `${join(__dirname, '../public/img/firma.png')}`,
 				width: 500,
 				style: ['alignCenter', 'marginFirmaImg'],
 			},

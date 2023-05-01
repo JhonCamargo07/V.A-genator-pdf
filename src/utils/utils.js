@@ -27,7 +27,7 @@ utils.getNameMonth = (numMonth) => {
 };
 
 utils.getUnderscoreForSignature = (lengthNombre) => {
-	let underscoreForSignature = ' _______';
+	let underscoreForSignature = ' ________';
 	for (let i = 0; i <= lengthNombre; i++) {
 		underscoreForSignature += '_';
 	}
@@ -143,6 +143,13 @@ utils.firstChartUpperCase = (cadena) => {
 	return cadena.replace(/\w/, (l) => l.toUpperCase());
 };
 
+utils.getDateNow = () => {
+	const date = new Date();
+	let currentDay = date.getDate();
+	if (currentDay < 9) currentDay = '0' + currentDay;
+	return currentDay;
+};
+
 utils.createPdf = (printer, contentCard) => {
 	const nameFile = uuidv4();
 	let pdfDoc = printer.createPdfKitDocument(contentCard);
@@ -153,7 +160,7 @@ utils.createPdf = (printer, contentCard) => {
 
 utils.createQrImage = (nameCard) => {
 	const qrImg = qr.imageSync(`http://${process.env.HOST}/public/pdf/${nameCard}.pdf`, { type: 'png' });
-	fs.writeFileSync(`${join(__dirname, `../public/img/${nameCard}`)}.png`, qrImg);
+	fs.writeFileSync(`${join(__dirname, '../public/img/${nameCard}')}.png`, qrImg);
 };
 
 module.exports = utils;
