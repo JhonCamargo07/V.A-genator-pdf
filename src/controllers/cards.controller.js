@@ -4,6 +4,12 @@ const PersonalModel = require('./../models/InfoCards');
 
 const cardsCtrl = {};
 
+/**
+ * Metodo para realizar una carta para la comunidad, crea el pdf, el qr y los nombres de estos, los gurarda en un archivo
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 cardsCtrl.comunityCard = (req, res) => {
 	if (
 		!req.body.namePeopleCertified ||
@@ -78,6 +84,12 @@ cardsCtrl.comunityCard = (req, res) => {
 	});
 };
 
+/**
+ * Metodo para realizar una carta familiar, crea el pdf, el qr y los nombres de estos, los gurarda en un archivo
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 cardsCtrl.familyCard = (req, res) => {
 	if (
 		!req.body.namePeopleCertifier ||
@@ -152,6 +164,12 @@ cardsCtrl.familyCard = (req, res) => {
 	});
 };
 
+/**
+ * Metodo para realizar una carta personal, crea el pdf, el qr y los nombres de estos, los gurarda en un archivo
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 cardsCtrl.personalCard = (req, res) => {
 	if (
 		!req.body.namePeopleCertifier ||

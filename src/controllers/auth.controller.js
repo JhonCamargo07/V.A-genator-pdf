@@ -30,4 +30,15 @@ ctrlAuth.isAutorized = (req, res, next) => {
 	return res.status(401).json({ success: false, message: 'Debe iniciar sesi\u00f3n' });
 };
 
+ctrlAuth.resetToken = (req, res) => {
+	const authorization = req.get('Authorization');
+
+	if (!jwt.verifyToken(authorization)) {
+		const token = jwt.login();
+		res.status(200).json({ success: true, message: 'Inicio de sesi\u00f3n exitoso', token: token });
+	}
+
+	res.status(200).json({ success: true, message: 'Inicio de sesi\u00f3n exitoso', token: authorization });
+};
+
 module.exports = ctrlAuth;

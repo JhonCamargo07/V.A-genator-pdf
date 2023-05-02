@@ -8,7 +8,7 @@ exports.login = () => {
 		userId: process.env.JWT_NAME,
 	};
 	// Genera el token
-	return jwt.sign(payload, secret, { expiresIn: '1h' });
+	return jwt.sign(payload, secret, { expiresIn: '5m' });
 };
 
 exports.verifyToken = (token) => {
