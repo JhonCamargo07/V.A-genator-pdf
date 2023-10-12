@@ -159,8 +159,10 @@ utils.createPdf = (printer, contentCard) => {
 };
 
 utils.createQrImage = (nameCard) => {
-	const qrImg = qr.imageSync(`http://${process.env.HOST}/public/pdf/${nameCard}.pdf`, { type: 'png' });
-	fs.writeFileSync(`${join(__dirname, '../public/img/${nameCard}')}.png`, qrImg);
+	const qrImg = qr.imageSync(`http://${process.env.HOST}/public/pdf/${nameCard}.pdf`, {
+		type: 'png',
+	});
+	fs.writeFileSync(`${join(__dirname, '../public/img/' + nameCard)}.png`, qrImg);
 };
 
 module.exports = utils;

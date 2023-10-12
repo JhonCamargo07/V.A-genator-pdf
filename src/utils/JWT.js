@@ -8,13 +8,15 @@ exports.login = () => {
 		userId: process.env.JWT_NAME,
 	};
 	// Genera el token
-	return jwt.sign(payload, secret, { expiresIn: '5m' });
+	return jwt.sign(payload, secret, { expiresIn: '1m' });
 };
 
 exports.verifyToken = (token) => {
-	let isTrue = false;
+	let isTokenValid = false;
+
 	jwt.verify(token, secret, (err) => {
-		if (!err) isTrue = true;
+		if (!err) isTokenValid = true;
 	});
-	return isTrue;
+
+	return isTokenValid;
 };
